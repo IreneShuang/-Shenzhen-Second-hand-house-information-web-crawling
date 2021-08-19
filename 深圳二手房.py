@@ -120,7 +120,7 @@ if __name__ == "__main__":
     print("*************************")
     print("仅供个人学习使用，欢迎批评指正！注：爬虫项目时效性短，请适当修改再运作")
     
-    crawling_page=int(input("请输入你想要爬取的页数（最多100页,请键入数字）\ How many pages do you want to crawl? please enter a int:max:100:"))
+    crawling_page=int(input("请输入你想要爬取的页数（每页有30个房源，最多100页,请键入数字）\ How many pages do you want to crawl? please enter a int:max:100 pages with 30 houses in each page:"))
     print("正在为您爬取.../crwarling data...")
     result=shen_zhen_er_shou(crawling_page)
     print(result)
