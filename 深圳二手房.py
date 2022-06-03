@@ -9,17 +9,17 @@ Created on Tue Aug 17 17:12:40 2021
 @author: Irene Tan
 """
 
-from selenium import webdriver #导入浏览器的功能
-import re #正则表达式，内置
-import time #用于处理延迟翻页
+from selenium import webdriver 
+import re 
+import time 
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 
-#创建webdriver
+
 basic_url="https://sz.lianjia.com/ershoufang/pg"
 scroll_down_js='document.documentElement.scrollTop = document.documentElement.scrollHeight'
 
-#定义等会需要储存信息的list
+
 name=[]
 good_house_tag=[]
 location=[]
@@ -42,25 +42,25 @@ def shen_zhen_er_shou(pages):
         driver.get(basic_url+str(page_number)+"/")
         driver.execute_script(scroll_down_js)
     
-        #开始肝
+       
         house_content_frame=driver.find_element_by_css_selector("ul.sellListContent")
         houses=house_content_frame.find_elements_by_css_selector("li.clear.LOGCLICKDATA")
         
         for house in houses:
             house_info=house.find_element_by_css_selector("div.info.clear")
-            #名字
+            
             name1=house_info.find_element_by_css_selector(".title").find_element_by_css_selector("a").text
             name.append(name1)
             
-            #标签
+         
             tag1=house_info.find_element_by_css_selector(".title").find_element_by_css_selector("span.goodhouse_tag.tagBlock").text
             good_house_tag.append(tag1)
             
-            #地点
+          
             location1=house_info.find_element_by_css_selector("div.positionInfo").text
             location.append(location1)
             
-            #更多信息
+          
             more_info1=house_info.find_element_by_css_selector(".address").text
             
            
